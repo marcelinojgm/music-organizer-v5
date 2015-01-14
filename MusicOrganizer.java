@@ -1,5 +1,5 @@
 import java.util.ArrayList;
-
+import java.time.Year;
 /**
  * A class to hold details of audio tracks.
  * Individual tracks may be played.
@@ -187,5 +187,12 @@ public class MusicOrganizer
                 System.out.println(track.getDetails());
             }
         }
+    }
+    /**
+     * selecciona el la cancion por su indice y fija su valor de año
+     */
+    public void setYearTrack(int index, Year year)
+    {
+        tracks.get(index).setYear(year);
     }
 }

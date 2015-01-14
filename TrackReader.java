@@ -2,6 +2,7 @@ import java.io.File;
 import java.io.FilenameFilter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.time.Year;
 
 /**
  * A helper class for our music application. This class can read files from the file system
@@ -66,8 +67,9 @@ public class TrackReader
     private Track decodeDetails(File file)
     {
         // The information needed.
-        String artist = "unknown";
-        String title = "unknown";
+        String artist   = "unknown";
+        String title    = "unknown";
+        Year year       = null;
         String filename = file.getPath();
         
         // Look for artist and title in the name of the file.
@@ -86,6 +88,6 @@ public class TrackReader
                 title = titlePart;
             }
         }
-        return new Track(artist, title, filename);
+        return new Track(artist, title, year, filename);
     }
 }
