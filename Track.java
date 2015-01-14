@@ -65,6 +65,14 @@ public class Track
     {
         return filename;
     }
+    
+    /**
+     * return the playCount
+     */
+     public int getPlayCount()
+    {
+        return playCount;
+    }
         
     /**
      * Return details of the track: artist, title and file name.
@@ -72,7 +80,7 @@ public class Track
      */
     public String getDetails()
     {
-        return artist + ": " + title + "  (file: " + filename + ")";
+        return artist + ": " + title + "  (file: " + filename + ") reproductions:" + playCount;
     }
     
     /**
