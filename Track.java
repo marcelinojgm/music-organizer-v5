@@ -13,6 +13,8 @@ public class Track
     private String title;
     // Where the track is stored.
     private String filename;
+    // numero de reproducciones de la cancion
+    private int playCount;
     
     /**
      * Constructor for objects of class Track.
@@ -23,6 +25,7 @@ public class Track
     public Track(String artist, String title, String filename)
     {
         setDetails(artist, title, filename);
+        playCount = 0;
     }
     
     /**
@@ -84,5 +87,19 @@ public class Track
         this.title = title;
         this.filename = filename;
     }
+    /**
+     * incrementa en 1 playCount
+     */
+    public void incrementPlayCount()
+    {
+        playCount++;
+    }
     
+    /**
+     * resetea el numero de veces que se ha escuchado el Track
+     */
+    public void resetPlayCount()
+    {
+        playCount = 0;
+    }
 }
