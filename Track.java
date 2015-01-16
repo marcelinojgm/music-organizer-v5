@@ -1,5 +1,3 @@
-import java.time.Year;
-
 /**
  * Store the details of a music track,
  * such as the artist, title, and file name.
@@ -18,7 +16,7 @@ public class Track
     // numero de reproducciones de la cancion
     private int playCount;
     // año de la cancion 
-    private Year year;
+    private String album;
 
     /**
      * Constructor for objects of class Track.
@@ -26,9 +24,9 @@ public class Track
      * @param title The track's title.
      * @param filename The track file. 
      */
-    public Track(String artist, String title,Year year, String filename)
+    public Track(String artist, String title,String album, String filename)
     {
-        setDetails(artist, title, year , filename);
+        setDetails(artist, title,  album , filename);
         this.playCount = 0;
     }
 
@@ -40,7 +38,7 @@ public class Track
      */
     public Track(String filename)
     {
-        setDetails("unknown", "unknown", null ,filename);
+        setDetails("unknown", "unknown",  "unknown" ,filename);
     }
 
     /**
@@ -81,9 +79,9 @@ public class Track
     /**
      * return age
      */
-    public Year getAge()
+    public String getAlbum()
     {
-        return this.year;
+        return this.album;
     }
 
     /**
@@ -92,16 +90,7 @@ public class Track
      */
     public String getDetails()
     {
-        String year = null; 
-        if(this.year == null)
-        {
-            year = "unknown";
-        }
-        else 
-        {
-            year = this.year + "";
-        }
-        return artist + ": " + title + " year: " + year + "  (file: " + filename + ") reproductions:" + playCount;
+        return artist + ": " + title + " album: " + album + "  (file: " + filename + ") reproductions:" + playCount;
     }
 
     /**
@@ -110,20 +99,20 @@ public class Track
      * @param title The track's title.
      * @param filename The track file. 
      */
-    private void setDetails(String artist, String title, Year year , String filename)
+    private void setDetails(String artist, String title, String album , String filename)
     {
         this.artist = artist;
         this.title = title;
-        this.year   = year;
+        this.album   = album;
         this.filename = filename;
     }
 
     /**
      * fijar fecha del track
      */
-    public void setYear(Year year)
+    public void setAlbum(String album)
     {
-        this.year = year ;  
+        this.album = album ;  
     }
 
     /**

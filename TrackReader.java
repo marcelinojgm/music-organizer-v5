@@ -2,8 +2,6 @@ import java.io.File;
 import java.io.FilenameFilter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.time.Year;
-
 /**
  * A helper class for our music application. This class can read files from the file system
  * from a given folder with a specified suffix. It will interpret the file name as artist/
@@ -69,7 +67,7 @@ public class TrackReader
         // The information needed.
         String artist   = "unknown";
         String title    = "unknown";
-        Year year       = null;
+        String album    = "unknown";
         String filename = file.getPath();
         
         // Look for artist and title in the name of the file.
@@ -88,6 +86,6 @@ public class TrackReader
                 title = titlePart;
             }
         }
-        return new Track(artist, title, year, filename);
+        return new Track(artist, title, album, filename);
     }
 }
