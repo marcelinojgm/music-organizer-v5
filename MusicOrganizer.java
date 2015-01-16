@@ -188,11 +188,28 @@ public class MusicOrganizer
             }
         }
     }
+
     /**
      * selecciona el la cancion por su indice y fija su valor de año
      */
     public void setAlbumTrack(int index,String album)
     {
         tracks.get(index).setAlbum(album);
+    }
+
+    /**
+     * informe por pantalla de si en este momento se está reproduciendo música o no
+     */
+    public void isPlaying()
+    {
+        if(player.getPlay())
+        {
+            System.out.println("is playing");
+
+        }
+        else
+        {
+            System.out.println("stop");
+        }
     }
 }
