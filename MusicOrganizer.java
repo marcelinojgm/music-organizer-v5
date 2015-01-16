@@ -53,11 +53,21 @@ public class MusicOrganizer
      */
     public void playTrack(int index)
     {
-        if(indexValid(index)) {
-            Track track = tracks.get(index);
-            player.startPlaying(track.getFilename());
-            System.out.println("Now playing: " + track.getArtist() + " - " + track.getTitle());
-            track.incrementPlayCount();
+        //en caso de que haya una reproduccion en curso
+        if(player.getPlaying())
+        {
+            System.out.println("ERROR!!! Ya hay un track en reproduccion.");
+            System.out.println("Detenga la reproduccion actual o espere a que termine");
+        }
+        //en caso de que no haya ninguna reproduccion en curso
+        else
+        {
+            if(indexValid(index)) {
+                Track track = tracks.get(index);
+                player.startPlaying(track.getFilename());
+                System.out.println("Now playing: " + track.getArtist() + " - " + track.getTitle());
+                track.incrementPlayCount();
+            }
         }
     }
 
@@ -123,9 +133,20 @@ public class MusicOrganizer
      */
     public void playFirst()
     {
-        if(tracks.size() > 0) {
-            player.startPlaying(tracks.get(0).getFilename());
-            tracks.get(0).incrementPlayCount();
+        //en caso de que haya una reproduccion en curso
+        if(player.getPlaying())
+        {
+            System.out.println("ERROR!!! Ya hay un track en reproduccion.");
+            System.out.println("Detenga la reproduccion actual o espere a que termine");
+        }
+        //en caso de que no haya ninguna reproduccion en curso
+        else
+        {
+            if(tracks.size() > 0) 
+            {
+                player.startPlaying(tracks.get(0).getFilename());
+                tracks.get(0).incrementPlayCount();
+            }
         }
     }
 
@@ -202,7 +223,7 @@ public class MusicOrganizer
      */
     public void isPlaying()
     {
-        if(player.getPlay())
+        if(player.getPlaying())
         {
             System.out.println("is playing");
 

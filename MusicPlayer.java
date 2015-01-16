@@ -20,7 +20,7 @@ public class MusicPlayer
     private AdvancedPlayer player;
     //indica si esta en reproduccion o no
     //false no se esta reproduciendo nada true se esta reproduciendo
-    private boolean play;
+    private boolean playing;
 
     /**
      * Constructor for objects of class MusicFilePlayer
@@ -28,7 +28,7 @@ public class MusicPlayer
     public MusicPlayer()
     {
         player = null;
-        play   = false;
+        this.playing = false;
     }
 
     /**
@@ -41,6 +41,7 @@ public class MusicPlayer
         try {
             setupPlayer(filename);
             player.play(500);
+            this.playing = true;
         }
         catch(JavaLayerException e) {
             reportProblem(filename);
@@ -62,9 +63,10 @@ public class MusicPlayer
             Thread playerThread = new Thread() {
                     public void run()
                     {
-                        play = true;
+                        
                         try {
                             player.play(5000);
+                            playing = true;
                         }
                         catch(JavaLayerException e) {
                             reportProblem(filename);
@@ -139,7 +141,7 @@ public class MusicPlayer
             if(player != null) {
                 player.stop();
                 player = null;
-                play = false;
+                this.playing  = false;
             }
         }
     }
@@ -156,24 +158,8 @@ public class MusicPlayer
     /**
      * retorna el valor de play
      */
-    public boolean getPlay()
+    public boolean getPlaying()
     {
-        return this.play;
-    }
-
-    /**
-     * cambia el valor de play de true a flase o false a true segun su balor actual
-     */
-    public void chagePlay()
-    {
-        if(play)
-        {
-            this.play = false;
-
-        }
-        else
-        {
-            this.play = true;
-        }
+        return this.playing;
     }
 }
