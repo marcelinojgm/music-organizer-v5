@@ -18,17 +18,14 @@ public class MusicPlayer
 {
     // The current player. It might be null.
     private AdvancedPlayer player;
-    //indica si esta en reproduccion o no
-    //false no se esta reproduciendo nada true se esta reproduciendo
-    private boolean playing;
-
+ 
     /**
      * Constructor for objects of class MusicFilePlayer
      */
     public MusicPlayer()
     {
         player = null;
-        this.playing = false;
+       
     }
 
     /**
@@ -41,7 +38,7 @@ public class MusicPlayer
         try {
             setupPlayer(filename);
             player.play(500);
-            this.playing = true;
+        
         }
         catch(JavaLayerException e) {
             reportProblem(filename);
@@ -66,7 +63,7 @@ public class MusicPlayer
                         
                         try {
                             player.play(5000);
-                            playing = true;
+                          
                         }
                         catch(JavaLayerException e) {
                             reportProblem(filename);
@@ -141,7 +138,7 @@ public class MusicPlayer
             if(player != null) {
                 player.stop();
                 player = null;
-                this.playing  = false;
+               
             }
         }
     }
@@ -160,6 +157,11 @@ public class MusicPlayer
      */
     public boolean getPlaying()
     {
-        return this.playing;
+        boolean playing = false;
+        if(player != null)
+        {
+            playing = true;
+        }
+        return playing;
     }
 }
