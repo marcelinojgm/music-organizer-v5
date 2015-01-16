@@ -117,7 +117,7 @@ public class MusicOrganizer
         }
         System.out.println();
     }
-    
+
     /**
      * List all tracks by the given artist.
      * @param artist The artist's name.
@@ -248,4 +248,18 @@ public class MusicOrganizer
         }
     }
 
+    /**
+     * borra los elementos de un artista determinado
+     */
+    public void removeByArtist(String artist)
+    {
+        Iterator<Track> it = tracks.iterator();
+        while(it.hasNext())
+        {
+            if(it.next().getArtist().contains(artist)) 
+            {
+                it.remove();
+            } 
+        }
+    }
 }
