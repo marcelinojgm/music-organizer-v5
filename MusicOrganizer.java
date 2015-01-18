@@ -297,7 +297,7 @@ public class MusicOrganizer
     public void playRandom()
     {
         Random random = new Random();
-        playTrack((int)(random.nextInt(tracks.size())));
+        playTrack(random.nextInt(tracks.size()));
     }
 
     /**
@@ -323,6 +323,38 @@ public class MusicOrganizer
             //reproduccion primeros segundos e incremento del ccount
             player.playSample(track.getFilename());
             track.incrementPlayCount();
+            
+        }
+    }
+    
+    /**
+     * reproduce los primeros segundos de todas las canciones de la coleccion en un orden aleatorio
+     */
+        public void playShuffle2()
+    {
+        //copia de la coleccion
+        ArrayList<Track> copia = new ArrayList<>();
+        copia = (ArrayList)tracks.clone();
+        //contador de reproducciones
+        int countPlayer = 0;
+        while(countPlayer < tracks.size())
+        {
+            //seleccion aleatoria de un elemento de la coleccion
+            Random random = new Random();
+            int trackRandom = random.nextInt(copia.size()); 
+            Track track = copia.get(trackRandom);
+            
+            //info del elemento sonando actualmente
+            System.out.println("Playing:");
+            System.out.println(track.getDetails());
+            
+            //reproduccion primeros segundos e incremento del ccount
+            player.playSample(track.getFilename());
+            track.incrementPlayCount();
+           
+            //remover la cancion de la coleccion
+            copia.remove(trackRandom);
+            countPlayer++;
             
         }
 
